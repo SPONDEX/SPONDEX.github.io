@@ -1,28 +1,42 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="SPONDEX 的个人主页，用来记录项目、想法和正在学习的东西。"
+      content="SPONDEX — research profile, current directions, and public work."
     />
-    <meta name="theme-color" content="#0b1020" />
-    <title>SPONDEX — 个人主页</title>
+    <meta name="author" content="SPONDEX" />
+    <meta name="theme-color" content="#f7f8fa" />
+    <link rel="canonical" href="https://spondex.github.io/" />
+    <title>SPONDEX — Research Homepage</title>
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1020'/%3E%3Cpath d='M18 18h28v8H26v12h20v8H18z' fill='%237ce7ff'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2318273f'/%3E%3Cpath d='M18 18h28v7H26v10h18v7H26v4h20v7H18z' fill='%23f7f8fa'/%3E%3C/svg%3E"
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "SPONDEX",
+        "url": "https://spondex.github.io/",
+        "sameAs": ["https://github.com/SPONDEX"]
+      }
+    </script>
     <style>
       :root {
-        color-scheme: dark;
-        --ink: #f5f7ff;
-        --muted: #9aa6bd;
-        --line: rgba(255, 255, 255, 0.12);
-        --accent: #7ce7ff;
-        --accent-deep: #081c27;
-        --surface: rgba(11, 16, 32, 0.78);
+        color-scheme: light;
+        --paper: #f7f8fa;
+        --surface: #ffffff;
+        --ink: #18273f;
+        --body: #3f4b5d;
+        --muted: #718096;
+        --line: #dfe4eb;
+        --accent: #1d5f8a;
+        --accent-soft: #e8f1f7;
+        --max-width: 1080px;
       }
 
       * {
@@ -31,303 +45,450 @@
 
       html {
         min-width: 320px;
-        background: #080c18;
+        scroll-behavior: smooth;
+        background: var(--paper);
       }
 
       body {
         min-height: 100vh;
         margin: 0;
-        color: var(--ink);
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+        color: var(--body);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        font-size: 1rem;
+        line-height: 1.7;
         background:
-          radial-gradient(circle at 82% 14%, rgba(48, 194, 232, 0.15), transparent 30rem),
-          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-          #080c18;
-        background-size: auto, 52px 52px, 52px 52px, auto;
+          linear-gradient(90deg, transparent 0, transparent calc(50% - 540px), rgba(24, 39, 63, 0.045) calc(50% - 540px), rgba(24, 39, 63, 0.045) calc(50% - 539px), transparent calc(50% - 539px)),
+          var(--paper);
       }
 
       a {
         color: inherit;
       }
 
-      .shell {
-        width: min(1080px, calc(100% - 40px));
-        min-height: 100vh;
-        margin: 0 auto;
-        display: grid;
-        grid-template-rows: auto 1fr auto;
+      a:focus-visible {
+        outline: 3px solid rgba(29, 95, 138, 0.28);
+        outline-offset: 4px;
       }
 
-      header,
-      footer {
+      .wrap {
+        width: min(var(--max-width), calc(100% - 48px));
+        margin: 0 auto;
+      }
+
+      header {
+        min-height: 84px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 84px;
+        gap: 32px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .identity {
+        color: var(--ink);
+        font-weight: 780;
+        letter-spacing: -0.025em;
+        text-decoration: none;
+      }
+
+      .identity span {
+        margin-left: 10px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+
+      nav a {
         color: var(--muted);
         font-size: 0.9rem;
-      }
-
-      .mark {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        color: var(--ink);
-        font-weight: 750;
+        font-weight: 650;
         text-decoration: none;
-        letter-spacing: -0.02em;
       }
 
-      .mark::before {
-        content: "";
-        width: 10px;
-        height: 10px;
-        border: 2px solid var(--accent);
-        border-radius: 3px;
-        box-shadow: 4px 4px 0 var(--accent);
-      }
-
-      .status {
-        display: inline-flex;
-        align-items: center;
-        gap: 9px;
-      }
-
-      .status::before {
-        content: "";
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: var(--accent);
-        box-shadow: 0 0 0 5px rgba(124, 231, 255, 0.09);
-      }
-
-      main {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 260px;
-        gap: clamp(56px, 10vw, 132px);
-        align-items: center;
-        padding: 72px 0 96px;
-      }
-
-      .eyebrow {
-        margin: 0 0 22px;
+      nav a:hover {
         color: var(--accent);
-        font: 700 0.78rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 290px;
+        gap: clamp(56px, 10vw, 120px);
+        align-items: end;
+        padding: clamp(86px, 14vw, 148px) 0 96px;
+      }
+
+      .kicker,
+      .section-label {
+        margin: 0;
+        color: var(--accent);
+        font-size: 0.76rem;
+        font-weight: 750;
         letter-spacing: 0.16em;
         text-transform: uppercase;
       }
 
       h1 {
-        max-width: 780px;
-        margin: 0;
-        font-size: clamp(3.6rem, 9.5vw, 7.8rem);
+        margin: 18px 0 0;
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(4.2rem, 10vw, 7.8rem);
+        font-weight: 500;
         line-height: 0.9;
-        letter-spacing: -0.072em;
+        letter-spacing: -0.065em;
       }
 
-      .intro {
-        max-width: 620px;
-        margin: 32px 0 0;
+      .lead {
+        max-width: 720px;
+        margin: 30px 0 0;
+        color: var(--body);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.35rem, 2.7vw, 2rem);
+        line-height: 1.45;
+      }
+
+      .hero-note {
+        padding: 22px 0 4px 24px;
+        border-left: 2px solid var(--accent);
+      }
+
+      .hero-note strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--ink);
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero-note p {
+        margin: 0;
         color: var(--muted);
-        font-size: clamp(1.05rem, 2vw, 1.28rem);
-        line-height: 1.75;
+        font-size: 0.95rem;
       }
 
-      .actions {
+      .links {
         display: flex;
         flex-wrap: wrap;
-        gap: 14px;
-        margin-top: 38px;
+        gap: 12px;
+        margin-top: 34px;
       }
 
       .button {
-        min-height: 48px;
-        padding: 0 20px;
+        min-height: 44px;
+        padding: 0 18px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid var(--ink);
+        border-radius: 4px;
+        color: var(--surface);
+        background: var(--ink);
+        font-size: 0.9rem;
         font-weight: 700;
         text-decoration: none;
         transition:
-          transform 160ms ease,
-          border-color 160ms ease,
-          background 160ms ease;
+          color 160ms ease,
+          background 160ms ease,
+          border-color 160ms ease;
       }
 
-      .button.primary {
+      .button:hover {
         border-color: var(--accent);
-        color: #061116;
         background: var(--accent);
       }
 
-      .button:hover,
-      .button:focus-visible {
-        transform: translateY(-2px);
-        border-color: var(--accent);
-        outline: none;
+      .button.secondary {
+        color: var(--ink);
+        background: transparent;
       }
 
-      .button.primary:hover,
-      .button.primary:focus-visible {
-        background: #a7efff;
+      .button.secondary:hover {
+        color: var(--accent);
+        background: var(--accent-soft);
       }
 
-      .card {
-        position: relative;
-        min-height: 320px;
-        padding: 28px;
-        overflow: hidden;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: var(--surface);
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
-        backdrop-filter: blur(18px);
-      }
-
-      .card::before {
-        content: "";
-        position: absolute;
-        width: 150px;
-        height: 150px;
-        top: -72px;
-        right: -58px;
-        border: 28px solid rgba(124, 231, 255, 0.09);
-        border-radius: 50%;
-      }
-
-      .card-label {
-        color: var(--muted);
-        font: 700 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-      }
-
-      .profile-name {
-        margin: 78px 0 0;
-        font-size: 1.65rem;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-        overflow-wrap: anywhere;
-      }
-
-      .card p {
-        margin: 10px 0 0;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
-      .card-line {
-        position: absolute;
-        right: 28px;
-        bottom: 28px;
-        left: 28px;
-        height: 1px;
-        background: linear-gradient(90deg, var(--accent), transparent);
-      }
-
-      footer {
+      .section {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: clamp(36px, 8vw, 100px);
+        padding: 78px 0;
         border-top: 1px solid var(--line);
       }
 
+      .section h2 {
+        margin: 0;
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.85rem, 3.4vw, 2.7rem);
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: -0.035em;
+      }
+
+      .section-copy > p:first-child {
+        margin-top: 0;
+      }
+
+      .section-copy > p {
+        max-width: 720px;
+        margin-bottom: 0;
+        font-size: 1.05rem;
+      }
+
+      .focus-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        margin-top: 34px;
+        border: 1px solid var(--line);
+        background: var(--line);
+      }
+
+      .focus-item {
+        min-height: 180px;
+        padding: 26px;
+        background: var(--surface);
+      }
+
+      .focus-number {
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+
+      .focus-item h3 {
+        margin: 36px 0 10px;
+        color: var(--ink);
+        font-size: 1rem;
+      }
+
+      .focus-item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .output-box {
+        margin-top: 32px;
+        padding: 26px 28px;
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--accent);
+        background: var(--surface);
+      }
+
+      .output-box strong {
+        color: var(--ink);
+      }
+
+      .output-box p {
+        margin: 4px 0 0;
+        color: var(--muted);
+      }
+
+      footer {
+        min-height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
       footer a {
+        color: var(--accent);
         text-underline-offset: 4px;
       }
 
       @media (max-width: 760px) {
-        .shell {
+        .wrap {
           width: min(100% - 32px, 620px);
         }
 
-        header,
-        footer {
+        header {
           min-height: 72px;
         }
 
-        main {
+        .identity span,
+        nav a:not(:last-child) {
+          display: none;
+        }
+
+        nav {
+          gap: 0;
+        }
+
+        .hero {
           grid-template-columns: 1fr;
-          gap: 48px;
-          padding: 60px 0 72px;
+          gap: 52px;
+          padding: 76px 0 70px;
         }
 
         h1 {
-          font-size: clamp(3.3rem, 20vw, 5.6rem);
+          font-size: clamp(3.8rem, 21vw, 6rem);
         }
 
-        .card {
-          min-height: 240px;
+        .section {
+          grid-template-columns: 1fr;
+          gap: 22px;
+          padding: 60px 0;
         }
 
-        .profile-name {
-          margin-top: 48px;
+        .focus-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .focus-item {
+          min-height: 150px;
         }
 
         footer {
-          gap: 24px;
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding: 28px 0;
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        nav,
+        .links {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 64px;
         }
       }
 
       @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
         *,
         *::before,
         *::after {
-          scroll-behavior: auto !important;
           transition: none !important;
         }
       }
     </style>
   </head>
   <body>
-    <div class="shell">
+    <div class="wrap">
       <header>
-        <a class="mark" href="/" aria-label="返回主页">SPONDEX</a>
-        <span class="status">保持好奇</span>
+        <a class="identity" href="#top">SPONDEX <span>Research Homepage</span></a>
+        <nav aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#work">Work</a>
+          <a href="https://github.com/SPONDEX">GitHub ↗</a>
+        </nav>
       </header>
 
-      <main>
-        <section aria-labelledby="page-title">
-          <p class="eyebrow">Personal space / 个人空间</p>
-          <h1 id="page-title">Hello,<br />world.</h1>
-          <p class="intro">
-            这里记录我的项目、想法和正在学习的东西。保持简单，持续创造。
-          </p>
-          <div class="actions">
-            <a class="button primary" id="github-link" href="https://github.com/">
-              查看 GitHub <span aria-hidden="true">↗</span>
-            </a>
+      <main id="top">
+        <section class="hero" aria-labelledby="page-title">
+          <div>
+            <p class="kicker">Research profile</p>
+            <h1 id="page-title">SPONDEX</h1>
+            <p class="lead">
+              Exploring how computational ideas become clear, reliable, and useful systems.
+            </p>
+            <div class="links">
+              <a class="button" href="#research">Research direction</a>
+              <a class="button secondary" href="https://github.com/SPONDEX">GitHub profile ↗</a>
+            </div>
+          </div>
+          <aside class="hero-note" aria-label="Current status">
+            <strong>Current focus</strong>
+            <p>
+              Building a concise, public record of ongoing research and technical work.
+            </p>
+          </aside>
+        </section>
+
+        <section class="section" id="about" aria-labelledby="about-title">
+          <div>
+            <p class="section-label">01 / About</p>
+          </div>
+          <div class="section-copy">
+            <h2 id="about-title">A research practice grounded in careful experiments.</h2>
+            <p>
+              I am interested in rigorous problem formulation, reproducible evaluation, and
+              technical work that remains understandable beyond the first prototype. This
+              website is the canonical home for my current research activity and public output.
+            </p>
           </div>
         </section>
 
-        <aside class="card" aria-label="GitHub 个人资料">
-          <span class="card-label">GitHub profile</span>
-          <div class="profile-name" id="profile-name">@github</div>
-          <p>代码、实验与公开笔记。</p>
-          <div class="card-line" aria-hidden="true"></div>
-        </aside>
+        <section class="section" id="research" aria-labelledby="research-title">
+          <div>
+            <p class="section-label">02 / Research</p>
+          </div>
+          <div class="section-copy">
+            <h2 id="research-title">From questions to evidence to working systems.</h2>
+            <div class="focus-grid">
+              <article class="focus-item">
+                <span class="focus-number">01</span>
+                <h3>Methods</h3>
+                <p>Problem framing, modeling, experiment design, and meaningful evaluation.</p>
+              </article>
+              <article class="focus-item">
+                <span class="focus-number">02</span>
+                <h3>Systems</h3>
+                <p>Implementation, prototyping, reliability, and reproducible workflows.</p>
+              </article>
+              <article class="focus-item">
+                <span class="focus-number">03</span>
+                <h3>Communication</h3>
+                <p>Clear papers, technical notes, and open artifacts that others can inspect.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="work" aria-labelledby="work-title">
+          <div>
+            <p class="section-label">03 / Work</p>
+          </div>
+          <div class="section-copy">
+            <h2 id="work-title">Publications and selected projects.</h2>
+            <div class="output-box">
+              <strong>Research output is being prepared for publication.</strong>
+              <p>
+                Papers, project summaries, datasets, and code releases will be added here as
+                they become public.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer>
-        <span>© <span id="year"></span></span>
-        <a id="footer-link" href="https://github.com/">GitHub</a>
+        <span>© <span id="year"></span> SPONDEX</span>
+        <span>Canonical homepage: <a href="https://spondex.github.io/">spondex.github.io</a></span>
       </footer>
     </div>
 
     <script>
-      const host = window.location.hostname;
-      const username = host.endsWith(".github.io") ? host.split(".")[0] : "github";
-      const profileUrl = username === "github" ? "https://github.com/" : `https://github.com/${username}`;
-
       document.querySelector("#year").textContent = new Date().getFullYear();
-      document.querySelector("#profile-name").textContent = `@${username}`;
-      document.querySelector("#github-link").href = profileUrl;
-      document.querySelector("#footer-link").href = profileUrl;
     </script>
   </body>
 </html>

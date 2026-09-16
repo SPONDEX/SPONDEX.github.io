@@ -1,5 +1,5 @@
-# Personal homepage
+# Research homepage
 
-A small, dependency-free personal homepage for GitHub Pages.
+A concise, dependency-free English research homepage for GitHub Pages.
 
-The page automatically reads the GitHub username from a `username.github.io` hostname and links back to that profile.
+The structure provides a formal canonical URL while leaving clear sections for future biography, research directions, publications, projects, and contact information.

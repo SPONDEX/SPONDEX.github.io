@@ -1,5 +1,14 @@
-# Research homepage
+# Hangyi Liu — Academic Homepage
 
-A concise, dependency-free English research homepage for GitHub Pages.
+Personal academic homepage built with the [Minimal Light](https://github.com/yaoyao-liu/minimal-light) Jekyll theme and hosted on GitHub Pages.
 
-The structure provides a formal canonical URL while leaving clear sections for future biography, research directions, publications, projects, and contact information.
+The site presents concise sections for:
+
+- About
+- Research interests
+- News
+- Selected projects
+- Publications
+- Contact
+
+Visit: [https://spondex.github.io/](https://spondex.github.io/)

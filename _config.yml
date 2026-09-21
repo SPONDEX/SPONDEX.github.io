@@ -1,0 +1,23 @@
+# Basic Information
+title: Hangyi Liu
+position: Undergraduate Student
+affiliation: Computer Science
+
+# Search Engine Optimization
+keywords: LLM systems, AI infrastructure, agent systems, model efficiency
+description: Personal academic homepage of Hangyi Liu, focusing on LLM systems, AI infrastructure, agents, and efficient learning.
+canonical: https://spondex.github.io/
+
+# Links
+github_link: https://github.com/SPONDEX
+
+# Theme Options
+enable_footnote: true
+auto_dark_mode: true
+font: "Sans Serif"
+
+# Minimal Light remote theme
+remote_theme: yaoyao-liu/minimal-light
+
+exclude:
+  - README.md

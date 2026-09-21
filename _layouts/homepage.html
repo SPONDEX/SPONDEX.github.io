@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <title>{{ site.title }} | {{ site.affiliation }}</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ site.description }}">
+  <meta name="color-scheme" content="light dark">
+  {% if site.keywords %}<meta name="keywords" content="{{ site.keywords }}">{% endif %}
+  {% if site.canonical %}<link rel="canonical" href="{{ site.canonical }}">{% endif %}
+  <script>
+    (function () {
+      var savedTheme = localStorage.getItem("site-theme");
+      var theme = savedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+      var savedLanguage = localStorage.getItem("site-language");
+      document.documentElement.lang = savedLanguage || (navigator.language.toLowerCase().startsWith("zh") ? "zh-CN" : "en");
+    })();
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="{{ '/assets/css/font_sans_serif.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <style>
+    :root {
+      --page-bg: #ffffff;
+      --panel-bg: #f7f9fc;
+      --text-main: #2c3e50;
+      --text-muted: #58677a;
+      --heading: #123b5d;
+      --link: #1573a6;
+      --border: #d8e1e8;
+      --control-bg: rgba(255, 255, 255, 0.92);
+      --control-hover: #edf4f8;
+      color-scheme: light;
+    }
+    html[data-theme="dark"] {
+      --page-bg: #111820;
+      --panel-bg: #18232e;
+      --text-main: #dce7ef;
+      --text-muted: #9fb0bf;
+      --heading: #e8f2f8;
+      --link: #75c5ef;
+      --border: #304252;
+      --control-bg: rgba(24, 35, 46, 0.94);
+      --control-hover: #243746;
+      color-scheme: dark;
+    }
+    html, body { background: var(--page-bg) !important; }
+    body, p, li, autocolor, position, email {
+      color: var(--text-main) !important;
+      transition: color .2s ease, background-color .2s ease;
+    }
+    h1, h2, h3, h4, strong { color: var(--heading) !important; }
+    a, a:hover, a:focus { color: var(--link) !important; }
+    [hidden] { display: none !important; }
+    .site-controls {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.4rem;
+      z-index: 20;
+      display: flex;
+      gap: .55rem;
+    }
+    .site-control {
+      appearance: none;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--control-bg);
+      color: var(--text-main);
+      min-height: 36px;
+      padding: .45rem .75rem;
+      font: inherit;
+      font-size: .86rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(15, 35, 50, .08);
+      backdrop-filter: blur(10px);
+      transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .site-control:hover { background: var(--control-hover); transform: translateY(-1px); }
+    .site-control:focus-visible { outline: 3px solid color-mix(in srgb, var(--link) 35%, transparent); outline-offset: 2px; }
+    .site-control i { width: 1rem; margin-right: .28rem; }
+    .language-control { min-width: 58px; }
+    .language-panel { animation: language-fade .18s ease-out; }
+    @keyframes language-fade { from { opacity: .35; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+    @media print {
+      .site-controls { display: none; }
+    }
+    @media screen and (max-width: 960px) {
+      .site-controls {
+        position: static;
+        justify-content: flex-end;
+        max-width: 860px;
+        margin: 1rem auto -1rem;
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-controls" aria-label="Display preferences">
+    <button id="theme-toggle" class="site-control" type="button" aria-label="Switch color theme" aria-pressed="false">
+      <i class="fa-solid fa-moon" aria-hidden="true"></i><span id="theme-label">Dark</span>
+    </button>
+    <button id="language-toggle" class="site-control language-control" type="button" aria-label="Switch language">中文</button>
+  </nav>
+
+  <div class="wrapper">
+    <header>
+      {% if site.avatar %}<a class="image avatar"><img src="{{ site.avatar }}" alt="Portrait of {{ site.title }}"></a>{% endif %}
+      <h1>{{ site.title }}</h1>
+      <div data-lang="en">
+        <position style="font-size:1.10rem;">Undergraduate Student</position><br>
+        <autocolor>Computer Science</autocolor>
+      </div>
+      <div data-lang="zh" hidden>
+        <position style="font-size:1.10rem;">本科生</position><br>
+        <autocolor>计算机科学</autocolor>
+      </div>
+      <br><br>
+      <div class="social-icons">
+        {% if site.github_link %}
+        <a href="{{ site.github_link }}" aria-label="GitHub profile" rel="noopener"><i class="fab fa-github"></i></a>
+        {% endif %}
+      </div>
+      <br>
+    </header>
+
+    <section>
+      {{ content }}
+      <br>
+      {% if site.enable_footnote %}
+      <p><small>Powered by Jekyll and <a href="https://github.com/yaoyao-liu/minimal-light" target="_blank" rel="noopener">Minimal Light</a> theme.</small></p>
+      {% endif %}
+    </section>
+    <footer></footer>
+  </div>
+
+  <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var themeButton = document.getElementById("theme-toggle");
+      var themeLabel = document.getElementById("theme-label");
+      var themeIcon = themeButton.querySelector("i");
+      var languageButton = document.getElementById("language-toggle");
+      var currentTheme = root.getAttribute("data-theme") || "light";
+      var currentLanguage = root.lang.toLowerCase().startsWith("zh") ? "zh" : "en";
+
+      function updateControls() {
+        var dark = currentTheme === "dark";
+        themeButton.setAttribute("aria-pressed", String(dark));
+        themeButton.setAttribute("aria-label", currentLanguage === "zh" ? "切换亮暗主题" : "Switch color theme");
+        themeLabel.textContent = currentLanguage === "zh" ? (dark ? "亮色" : "暗色") : (dark ? "Light" : "Dark");
+        themeIcon.className = dark ? "fa-solid fa-sun" : "fa-solid fa-moon";
+        languageButton.textContent = currentLanguage === "zh" ? "EN" : "中文";
+        languageButton.setAttribute("aria-label", currentLanguage === "zh" ? "切换为英文" : "Switch to Chinese");
+      }
+
+      function applyTheme(theme, remember) {
+        currentTheme = theme;
+        root.setAttribute("data-theme", theme);
+        if (remember) localStorage.setItem("site-theme", theme);
+        updateControls();
+      }
+
+      function applyLanguage(language, remember) {
+        currentLanguage = language;
+        root.lang = language === "zh" ? "zh-CN" : "en";
+        document.querySelectorAll("[data-lang]").forEach(function (element) {
+          element.hidden = element.getAttribute("data-lang") !== language;
+        });
+        document.title = language === "zh" ? "刘航毅 | 计算机科学" : "{{ site.title }} | {{ site.affiliation }}";
+        if (remember) localStorage.setItem("site-language", language);
+        updateControls();
+      }
+
+      themeButton.addEventListener("click", function () {
+        applyTheme(currentTheme === "dark" ? "light" : "dark", true);
+      });
+      languageButton.addEventListener("click", function () {
+        applyLanguage(currentLanguage === "zh" ? "en" : "zh", true);
+      });
+
+      applyTheme(currentTheme, false);
+      applyLanguage(currentLanguage, false);
+    })();
+  </script>
+</body>
+</html>

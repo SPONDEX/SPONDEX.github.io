@@ -84,6 +84,7 @@
     .site-control i { width: 1rem; margin-right: .28rem; }
     .language-control { min-width: 58px; }
     .language-panel { animation: language-fade .18s ease-out; }
+    .sidebar-email { display: inline-block; margin-top: .7rem; font-size: .88rem; word-break: break-word; }
     @keyframes language-fade { from { opacity: .35; transform: translateY(3px); } to { opacity: 1; transform: none; } }
     @media print {
       .site-controls { display: none; }
@@ -110,7 +111,8 @@
   <div class="wrapper">
     <header>
       {% if site.avatar %}<a class="image avatar"><img src="{{ site.avatar }}" alt="Portrait of {{ site.title }}"></a>{% endif %}
-      <h1>{{ site.title }}</h1>
+      <h1 data-lang="en">{{ site.title }}</h1>
+      <h1 data-lang="zh" hidden>刘航逸</h1>
       <div data-lang="en">
         <position style="font-size:1.10rem;">Undergraduate Student</position><br>
         <autocolor>Computer Science</autocolor>
@@ -119,6 +121,7 @@
         <position style="font-size:1.10rem;">本科生</position><br>
         <autocolor>计算机科学</autocolor>
       </div>
+      <a class="sidebar-email" href="mailto:cmhawling@sjtu.edu.cn" aria-label="Email cmhawling@sjtu.edu.cn"><email>cmhawling@sjtu.edu.cn</email></a>
       <br><br>
       <div class="social-icons">
         {% if site.github_link %}

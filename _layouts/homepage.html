@@ -172,7 +172,7 @@
         document.querySelectorAll("[data-lang]").forEach(function (element) {
           element.hidden = element.getAttribute("data-lang") !== language;
         });
-        document.title = language === "zh" ? "刘航毅 | 计算机科学" : "{{ site.title }} | {{ site.affiliation }}";
+        document.title = language === "zh" ? "刘航逸 | 计算机科学" : "{{ site.title }} | {{ site.affiliation }}";
         if (remember) localStorage.setItem("site-language", language);
         updateControls();
       }

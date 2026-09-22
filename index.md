@@ -43,6 +43,7 @@ Publications and preprints will be listed here when available.
 ## Contact
 
 The best way to follow my public work is through [GitHub](https://github.com/SPONDEX).
+You can also contact me through cmhawling@sjtu.edu.cn
 
 </div>
 
@@ -87,5 +88,6 @@ The best way to follow my public work is through [GitHub](https://github.com/SPO
 ## 联系方式
 
 可以通过 [GitHub](https://github.com/SPONDEX) 关注我的公开工作。
+你也可以通过 cmhawling@sjtu.edu.cn 与我联系。
 
 </div>
